@@ -133,9 +133,14 @@ export default function App(): JSX.Element {
                 <p className="error">Oops! The correct answer was {currentSong?.composer}.</p>
               )}
               <p className="info">Fun Fact: {currentSong?.fun_fact}</p>
-            </div>
+
+          {/* Display the composer's image */}
+          {currentSong?.image_link && (
+            <img src={currentSong.image_link} alt={currentSong.composer} style={{ width: '200px', marginTop: '20px' }} />
           )}
         </div>
+      )}
+    </div>
         
         <div className="sidebar">
           <h2>Game Info</h2>
