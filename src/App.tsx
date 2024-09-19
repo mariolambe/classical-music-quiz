@@ -76,6 +76,7 @@ export default function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [answerChecked, setAnswerChecked] = useState<boolean>(false);
   const [usedSongs, setUsedSongs] = useState<Song[]>([]);
+  const [audioError, setAudioError] = useState<boolean>(false);
 
   useEffect(() => {
     startNewGame();
@@ -100,6 +101,7 @@ export default function App(): JSX.Element {
     setSelectedOption(null);
     setAnswerChecked(false);
     setUsedSongs([]);
+    setAudioError(false);
   };
 
   const checkAnswer = (): void => {
@@ -117,6 +119,11 @@ export default function App(): JSX.Element {
     setAnswerChecked(false);
     setQuestionNumber(questionNumber + 1);
     setSelectedOption(null);
+    setAudioError(false);
+  };
+
+  const handleAudioError = () => {
+    setAudioError(true);
   };
 
   const uniqueComposers = Array.from(new Set(classicalMusicQuiz.map(song => song.composer)));
@@ -132,8 +139,15 @@ export default function App(): JSX.Element {
           
           {currentSong && (
             <>
-              <p className="medium-font">Title: {currentSong.title}</p>
-              <audio controls src={currentSong.music_link}></audio>
+              {audioError ? (
+                <p className="error">Error loading audio. Please try again.</p>
+              ) : (
+                <audio 
+                  controls 
+                  src={currentSong.music_link}
+                  onError={handleAudioError}
+                ></audio>
+              )}
             </>
           )}
           
@@ -158,16 +172,17 @@ export default function App(): JSX.Element {
             <button onClick={startNewGame}>Start New Game</button>
           </div>
           
-          {answerChecked && (
+          {answerChecked && currentSong && (
             <div>
-              {selectedOption === currentSong?.composer ? (
+              <p className="medium-font">Title: {currentSong.title}</p>
+              {selectedOption === currentSong.composer ? (
                 <p className="success">Correct! 🎉</p>
               ) : (
-                <p className="error">Oops! The correct answer was {currentSong?.composer}.</p>
+                <p className="error">Oops! The correct answer was {currentSong.composer}.</p>
               )}
-              <p className="info">Fun Fact: {currentSong?.fun_fact}</p>
+              <p className="info">Fun Fact: {currentSong.fun_fact}</p>
 
-              {currentSong?.image_link && (
+              {currentSong.image_link && (
                 <img src={currentSong.image_link} alt={currentSong.composer} style={{ width: '200px', marginTop: '20px' }} />
               )}
             </div>
