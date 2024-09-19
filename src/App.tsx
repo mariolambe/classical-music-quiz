@@ -29,7 +29,7 @@ const classicalMusicQuiz: Song[] = [
   },
   {
     composer: "Giuseppe Verdi",
-    music_link: "https://upload.wikimedia.org/wikipedia/commons/d/dc/ICBSA_Verdi_-_Il_trovatore%2C_Tacea_la_notte_placida.ogg",
+    music_link: "https://upload.wikimedia.org/wikipedia/commons/b/b6/ICBSA_Verdi_-_Messa_da_requiem_parte_03%2C_Dies_irae.ogg",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/1/19/Verdi_by_Giovanni_Boldini.jpg",
     fun_fact: "Giuseppe Verdi was so passionate about gardening that he once said if he hadn't been a composer, he would have been a farmer!"
   },
