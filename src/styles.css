@@ -2,21 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(
-    to right top,
-    #d16ba5,
-    #c777b9,
-    #ba83ca,
-    #aa8fd8,
-    #9a9ae1,
-    #8aa7ec,
-    #79b3f4,
-    #69bff8,
-    #52cffe,
-    #41dfff,
-    #46eefa,
-    #5ffbf1
-  );
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
   min-height: 100vh;
 }
 
@@ -28,7 +14,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #1e1e1e;
+  color: #1E1E1E;
 }
 
 .game-area {
@@ -52,17 +38,17 @@ h1 {
 
 .medium-font {
   font-size: 24px;
-  color: #1e1e1e;
+  color: #1E1E1E;
 }
 
 .big-font {
   font-size: 30px;
   font-weight: bold;
-  color: #1e1e1e;
+  color: #1E1E1E;
 }
 
 button {
-  background-color: #4caf50;
+  background-color: #4CAF50;
   color: white;
   font-size: 20px;
   border: none;
@@ -92,7 +78,7 @@ button:disabled {
 }
 
 .option.selected {
-  background-color: #4caf50;
+  background-color: #4CAF50;
   color: white;
 }
 
@@ -115,7 +101,7 @@ button:disabled {
 
 .progress {
   height: 20px;
-  background-color: #4caf50;
+  background-color: #4CAF50;
   border-radius: 10px;
   transition: width 0.5s;
 }
