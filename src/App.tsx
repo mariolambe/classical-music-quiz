@@ -31,7 +31,7 @@ const classicalMusicQuiz: Song[] = [
     composer: "Giuseppe Verdi",
     music_link: "https://upload.wikimedia.org/wikipedia/commons/d/dc/ICBSA_Verdi_-_Il_trovatore%2C_Tacea_la_notte_placida.ogg",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/1/19/Verdi_by_Giovanni_Boldini.jpg",
-    fun_fact: "Giuseppe Verdi was so passionate about gardening that he once said if he hadn’t been a composer, he would have been a farmer!"
+    fun_fact: "Giuseppe Verdi was so passionate about gardening that he once said if he hadn't been a composer, he would have been a farmer!"
   },
   {
     composer: "Frédéric Chopin",
@@ -41,14 +41,11 @@ const classicalMusicQuiz: Song[] = [
   }
 ];
 
-const achievements = ["🎼 Melody Master", "🎹 Piano Prodigy", "🎻 Violin Virtuoso", "🎺 Trumpet Talent"];
-
 export default function App(): JSX.Element {
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
   const [score, setScore] = useState<number>(0);
   const [totalQuestions, setTotalQuestions] = useState<number>(0);
   const [questionNumber, setQuestionNumber] = useState<number>(1);
-  const [level, setLevel] = useState<number>(1);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [answerChecked, setAnswerChecked] = useState<boolean>(false);
   const [usedSongs, setUsedSongs] = useState<Song[]>([]);
@@ -73,7 +70,6 @@ export default function App(): JSX.Element {
     setScore(0);
     setTotalQuestions(0);
     setQuestionNumber(1);
-    setLevel(1);
     setSelectedOption(null);
     setAnswerChecked(false);
     setUsedSongs([]);
@@ -93,9 +89,6 @@ export default function App(): JSX.Element {
     setCurrentSong(getNewSong());
     setAnswerChecked(false);
     setQuestionNumber(questionNumber + 1);
-    if (questionNumber % 5 === 0) {
-      setLevel(level + 1);
-    }
     setSelectedOption(null);
   };
 
@@ -106,6 +99,7 @@ export default function App(): JSX.Element {
       <div className="game-area">
         <div className="main-content">
           <p className="medium-font">Question {questionNumber}: Who composed this music?</p>
+          <p className="medium-font">Score: {score}/{totalQuestions}</p>
           
           {currentSong && (
             <audio controls src={currentSong.music_link}></audio>
@@ -129,6 +123,7 @@ export default function App(): JSX.Element {
           <div className="button-group">
             <button onClick={checkAnswer} disabled={!selectedOption || answerChecked}>Check Answer</button>
             <button onClick={nextQuestion} disabled={!answerChecked}>Next Question</button>
+            <button onClick={startNewGame}>Start New Game</button>
           </div>
           
           {answerChecked && (
@@ -140,31 +135,11 @@ export default function App(): JSX.Element {
               )}
               <p className="info">Fun Fact: {currentSong?.fun_fact}</p>
 
-          {/* Display the composer's image */}
-          {currentSong?.image_link && (
-            <img src={currentSong.image_link} alt={currentSong.composer} style={{ width: '200px', marginTop: '20px' }} />
+              {currentSong?.image_link && (
+                <img src={currentSong.image_link} alt={currentSong.composer} style={{ width: '200px', marginTop: '20px' }} />
+              )}
+            </div>
           )}
-        </div>
-      )}
-    </div>
-        
-        <div className="sidebar">
-          <h2>Game Info</h2>
-          <p className="big-font">Level: {level}</p>
-          <p className="big-font">Score: {score}/{totalQuestions}</p>
-          <div className="progress-bar">
-            <div className="progress" style={{width: `${(score / Math.max(totalQuestions, 1)) * 100}%`}}></div>
-          </div>
-          <button onClick={startNewGame}>Start New Game</button>
-          
-          <h2>Achievements</h2>
-          <ul className="achievements">
-            {achievements.map((achievement, index) => (
-              <li key={index} className={index < Math.floor(score / 5) ? 'unlocked' : 'locked'}>
-                {achievement} {index < Math.floor(score / 5) ? '⭐' : '🔒'}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>
