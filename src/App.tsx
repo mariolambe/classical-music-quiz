@@ -13,56 +13,35 @@ const classicalMusicQuiz: Song[] = [
   {
     composer: "Wolfgang Amadeus Mozart",
     title: "Die Zauberflöte",
-    music_link: "https://upload.wikimedia.org/wikipedia/commons/8/82/W._A._Mozart_-_Die_Zauberfl%C3%B6te_-_02._Zu_hilfe%21_Zu_hilfe%21_%28Ferenc_Fricsay%2C_1953%29.ogg",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/mozart.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Wolfgang-amadeus-mozart_1.jpg",
     fun_fact: "Mozart began composing at the age of 5 and wrote over 600 pieces of music!"
   },
   {
-    composer: "Wolfgang Amadeus Mozart",
-    title: "Eine kleine Nachtmusik",
-    music_link: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Mozart_-_Eine_kleine_Nachtmusik_-_1._Allegro.ogg",
-    image_link: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Wolfgang-amadeus-mozart_1.jpg",
-    fun_fact: "Mozart had perfect pitch and could write entire compositions in his head before putting them to paper!"
-  },
-  {
-    composer: "Antonio Vivaldi",
-    title: "The Four Seasons - Spring",
-    music_link: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Vivaldi_-_Four_Seasons_1_Spring_mvt_3_Allegro_-_John_Harrison_violin.oga",
-    image_link: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Vivaldi.jpg",
-    fun_fact: "Vivaldi was nicknamed 'The Red Priest' because of his red hair!"
-  },
-  {
     composer: "Antonio Vivaldi",
     title: "The Four Seasons - Summer",
-    music_link: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Vivaldi_-_Four_Seasons_2_Summer_mvt_3_Presto_-_John_Harrison_violin.oga",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/bach.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Vivaldi.jpg",
     fun_fact: "Vivaldi wrote over 500 concertos, with about 230 of them for violin!"
   },
   {
     composer: "Johann Sebastian Bach",
     title: "Cello Suite No. 1 in G",
-    music_link: "https://upload.wikimedia.org/wikipedia/commons/4/43/JOHN_MICHEL_CELLO-J_S_BACH_CELLO_SUITE_1_in_G_Prelude.ogg",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/bach.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg",
     fun_fact: "Bach had 20 children and many of them became musicians too!"
   },
   {
-    composer: "Johann Sebastian Bach",
-    title: "Toccata and Fugue in D minor",
-    music_link: "https://upload.wikimedia.org/wikipedia/commons/b/bf/BWV_565_-_Toccata_et_Fuga_-_Dmin_-_Diego_Canale.ogg",
-    image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg",
-    fun_fact: "Bach's music was largely forgotten for nearly a century after his death until it was revived by Felix Mendelssohn!"
-  },
-  {
     composer: "Giuseppe Verdi",
     title: "Requiem",
-    music_link: "https://upload.wikimedia.org/wikipedia/commons/b/b6/ICBSA_Verdi_-_Messa_da_requiem_parte_03%2C_Dies_irae.ogg",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/verdi.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/1/19/Verdi_by_Giovanni_Boldini.jpg",
     fun_fact: "Giuseppe Verdi was so passionate about gardening that he once said if he hadn't been a composer, he would have been a farmer!"
   },
   {
     composer: "Frédéric Chopin",
     title: "Nocturne in E-flat major, Op. 9, No. 2",
-    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/music/chopin.mp3",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/chopin.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Frederic_Chopin_photo.jpeg",
     fun_fact: "Chopin's heart is buried in Warsaw, while the rest of him is buried in Paris!"
   }
