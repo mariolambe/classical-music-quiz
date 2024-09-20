@@ -20,7 +20,7 @@ const classicalMusicQuiz: Song[] = [
   {
     composer: "Antonio Vivaldi",
     title: "The Four Seasons - Summer",
-    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/bach.mp3",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/vivaldi.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Vivaldi.jpg",
     fun_fact: "Vivaldi wrote over 500 concertos, with about 230 of them for violin!"
   },
