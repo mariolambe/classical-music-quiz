@@ -15,34 +15,28 @@ body {
 h1 {
   text-align: center;
   color: #1E1E1E;
+  font-size: 2rem;
 }
 
 .game-area {
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
 .main-content {
-  flex: 3;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.sidebar {
-  flex: 1;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 10px;
 }
 
 .medium-font {
-  font-size: 24px;
+  font-size: 1.2rem;
   color: #1E1E1E;
 }
 
 .big-font {
-  font-size: 30px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #1E1E1E;
 }
@@ -50,12 +44,13 @@ h1 {
 button {
   background-color: #4CAF50;
   color: white;
-  font-size: 20px;
+  font-size: 1rem;
   border: none;
   border-radius: 10px;
   padding: 10px 24px;
   margin: 10px 0;
   cursor: pointer;
+  width: 100%;
 }
 
 button:disabled {
@@ -64,17 +59,26 @@ button:disabled {
 }
 
 .options {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
 }
 
 .option {
-  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .option.selected {
@@ -86,8 +90,22 @@ button:disabled {
   display: none;
 }
 
+.composer-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.composer-name {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
 .button-group {
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -138,4 +156,53 @@ button:disabled {
 audio {
   width: 100%;
   margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .game-area {
+    flex-direction: row;
+  }
+
+  .main-content {
+    flex: 3;
+  }
+
+  .sidebar {
+    flex: 1;
+  }
+
+  .options {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .composer-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .composer-name {
+    font-size: 1rem;
+  }
+
+  .button-group {
+    flex-direction: row;
+  }
+
+  button {
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .medium-font {
+    font-size: 1.5rem;
+  }
+
+  .big-font {
+    font-size: 2rem;
+  }
 }
