@@ -1,21 +1,8 @@
-:root {
-  --primary-color: #4A90E2;
-  --secondary-color: #50E3C2;
-  --tertiary-color: #F5A623;
-  --background-color: #F0F4F8;
-  --text-color: #333333;
-  --light-text: #FFFFFF;
-  --error-color: #E74C3C;
-  --success-color: #2ECC71;
-  --info-color: #3498DB;
-}
-
 body {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: #f0f4f8;
   min-height: 100vh;
 }
 
@@ -27,50 +14,28 @@ body {
 
 h1 {
   text-align: center;
-  color: var(--primary-color);
+  color: #4a90e2;
   font-size: 2.5rem;
   margin-bottom: 30px;
 }
 
 .game-area {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
 
-.question-area {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .medium-font {
   font-size: 1.2rem;
-  color: var(--text-color);
-}
-
-.score {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.music-player {
-  margin-bottom: 20px;
-}
-
-audio {
-  width: 100%;
-  margin-bottom: 20px;
+  color: #333333;
 }
 
 .options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .option {
@@ -79,7 +44,7 @@ audio {
   align-items: center;
   text-align: center;
   padding: 15px;
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -91,8 +56,8 @@ audio {
 }
 
 .option.selected {
-  background-color: var(--primary-color);
-  color: var(--light-text);
+  background-color: #4a90e2;
+  color: #ffffff;
 }
 
 .option input[type="radio"] {
@@ -116,57 +81,46 @@ audio {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 button {
+  background-color: #4a90e2;
+  color: white;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3a7bc8;
 }
 
 button:disabled {
-  opacity: 0.5;
+  background-color: #cccccc;
   cursor: not-allowed;
 }
 
-.primary-btn {
-  background-color: var(--primary-color);
-  color: var(--light-text);
-}
-
-.secondary-btn {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-}
-
-.tertiary-btn {
-  background-color: var(--tertiary-color);
-  color: var(--text-color);
-}
-
-.feedback-area {
-  background-color: #F8F9FA;
-  border-radius: 5px;
-  padding: 15px;
-  margin-top: 20px;
-}
-
 .success {
-  color: var(--success-color);
+  color: #2ecc71;
   font-weight: bold;
 }
 
 .error {
-  color: var(--error-color);
+  color: #e74c3c;
   font-weight: bold;
 }
 
 .info {
-  color: var(--info-color);
+  color: #3498db;
+}
+
+audio {
+  width: 100%;
+  margin: 20px 0;
 }
 
 .modal-overlay {
@@ -183,7 +137,7 @@ button:disabled {
 }
 
 .modal-content {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
   text-align: center;
@@ -193,7 +147,7 @@ button:disabled {
 
 .modal-content h2 {
   margin-top: 0;
-  color: var(--primary-color);
+  color: #4a90e2;
 }
 
 .modal-content button {
