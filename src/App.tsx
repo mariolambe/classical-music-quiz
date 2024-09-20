@@ -120,22 +120,10 @@ export default function App(): JSX.Element {
       
       <div className="game-area">
         <div className="main-content">
-          <p className="medium-font">Who composed this music?</p>
-          <p className="medium-font">Score: {score}/{totalQuestions}</p>
-          
-          {currentSong && (
-            <>
-              {audioError ? (
-                <p className="error">Error loading audio. Please try again.</p>
-              ) : (
-                <audio 
-                  controls 
-                  src={currentSong.music_link}
-                  onError={handleAudioError}
-                ></audio>
-              )}
-            </>
-          )}
+          <div className="question-score">
+            <p className="medium-font">Who composed this music?</p>
+            <p className="medium-font">Score: {score}/{totalQuestions}</p>
+          </div>
           
           <div className="options">
             {uniqueComposers.map((composer, index) => {
@@ -156,14 +144,30 @@ export default function App(): JSX.Element {
             })}
           </div>
           
-          <div className="button-group">
-            <button onClick={checkAnswer} disabled={!selectedOption || answerChecked}>Check Answer</button>
-            <button onClick={nextQuestion} disabled={!answerChecked}>Next Question</button>
-            <button onClick={startNewGame}>Start New Game</button>
+          <div className="control-area">
+            {currentSong && (
+              <div className="music-player">
+                {audioError ? (
+                  <p className="error">Error loading audio. Please try again.</p>
+                ) : (
+                  <audio 
+                    controls 
+                    src={currentSong.music_link}
+                    onError={handleAudioError}
+                  ></audio>
+                )}
+              </div>
+            )}
+            
+            <div className="button-group">
+              <button onClick={checkAnswer} disabled={!selectedOption || answerChecked}>Check Answer</button>
+              <button onClick={nextQuestion} disabled={!answerChecked}>Next Question</button>
+              <button onClick={startNewGame}>Start New Game</button>
+            </div>
           </div>
           
           {answerChecked && currentSong && (
-            <div>
+            <div className="feedback-area">
               <p className="medium-font">Title: {currentSong.title}</p>
               {selectedOption === currentSong.composer ? (
                 <p className="success">Correct! 🎉</p>
