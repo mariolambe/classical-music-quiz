@@ -18,11 +18,25 @@ const classicalMusicQuiz: Song[] = [
     fun_fact: "Mozart began composing at the age of 5 and wrote over 600 pieces of music!"
   },
   {
+    composer: "Johann Sebastian Bach",
+    title: "Cello Suite No. 1 in G",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/bach-1.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg",
+    fun_fact: "Bach wrote over 1,000 pieces of music in his lifetime! He was so talented that people still play his music today, even though he lived over 300 years ago."
+  },
+  {
     composer: "Antonio Vivaldi",
     title: "The Four Seasons - Summer",
     music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/vivaldi.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Vivaldi.jpg",
     fun_fact: "Vivaldi wrote over 500 concertos, with about 230 of them for violin!"
+  },
+    {
+    composer: "Richard Strauss",
+    title: "Also Sprach Zarathustra",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/strauss.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/2/2d/Strauss3.jpg",
+    fun_fact: "Strauss started writing music when he was just six years old—he could compose tunes before most kids even start school!"
   },
   {
     composer: "Johann Sebastian Bach",
