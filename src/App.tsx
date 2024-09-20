@@ -24,6 +24,13 @@ const classicalMusicQuiz: Song[] = [
     image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg",
     fun_fact: "Bach wrote over 1,000 pieces of music in his lifetime! He was so talented that people still play his music today, even though he lived over 300 years ago."
   },
+   {
+    composer: "Ludwig van Beethoven",
+    title: "Brandenburg Concerto No. 3",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/beethoven.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Beethoven.jpg",
+    fun_fact: "Beethoven wrote some of the most famous music ever, like his Ninth Symphony, even after he went completely deaf! He could "hear" the music in his mind."
+  },
   {
     composer: "Antonio Vivaldi",
     title: "The Four Seasons - Summer",
