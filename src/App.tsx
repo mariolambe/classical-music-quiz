@@ -173,7 +173,9 @@ export default function App(): JSX.Element {
         <div className="modal-overlay">
           <div className="modal-content feedback-modal">
             <h2>{selectedOption === currentSong.composer ? "Correct! 🎉" : "Oops!"}</h2>
-            <p>The correct answer was {currentSong.composer}.</p>
+            {selectedOption !== currentSong.composer && (
+              <p>The correct answer was {currentSong.composer}.</p>
+            )}
             <p className="medium-font">Title: {currentSong.title}</p>
             <p className="info">Fun Fact: {currentSong.fun_fact}</p>
             <button onClick={nextQuestion}>Next Question</button>
