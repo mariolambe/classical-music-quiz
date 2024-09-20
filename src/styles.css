@@ -1,67 +1,76 @@
+:root {
+  --primary-color: #4A90E2;
+  --secondary-color: #50E3C2;
+  --tertiary-color: #F5A623;
+  --background-color: #F0F4F8;
+  --text-color: #333333;
+  --light-text: #FFFFFF;
+  --error-color: #E74C3C;
+  --success-color: #2ECC71;
+  --info-color: #3498DB;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  background-color: var(--background-color);
+  color: var(--text-color);
   min-height: 100vh;
 }
 
 .App {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
 h1 {
   text-align: center;
-  color: #1E1E1E;
-  font-size: 2rem;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 30px;
 }
 
 .game-area {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
-.main-content {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
+.question-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .medium-font {
   font-size: 1.2rem;
-  color: #1E1E1E;
+  color: var(--text-color);
 }
 
-.big-font {
-  font-size: 1.5rem;
+.score {
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #1E1E1E;
+  color: var(--primary-color);
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 24px;
-  margin: 10px 0;
-  cursor: pointer;
+.music-player {
+  margin-bottom: 20px;
+}
+
+audio {
   width: 100%;
-}
-
-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+  margin-bottom: 20px;
 }
 
 .options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 .option {
@@ -69,8 +78,8 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
+  padding: 15px;
+  background-color: #F8F9FA;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -82,8 +91,8 @@ button:disabled {
 }
 
 .option.selected {
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--light-text);
 }
 
 .option input[type="radio"] {
@@ -91,54 +100,73 @@ button:disabled {
 }
 
 .composer-image {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 10px;
 }
 
 .composer-name {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .button-group {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 10px;
-}
-
-.progress-bar {
-  width: 100%;
-  background-color: #f3f3f3;
-  border-radius: 13px;
-  padding: 3px;
   margin-bottom: 20px;
 }
 
-.progress {
-  height: 20px;
-  background-color: #4CAF50;
-  border-radius: 10px;
-  transition: width 0.5s;
+button {
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+}
+
+.secondary-btn {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.tertiary-btn {
+  background-color: var(--tertiary-color);
+  color: var(--text-color);
+}
+
+.feedback-area {
+  background-color: #F8F9FA;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 20px;
 }
 
 .success {
-  color: green;
+  color: var(--success-color);
+  font-weight: bold;
 }
 
 .error {
-  color: red;
+  color: var(--error-color);
+  font-weight: bold;
 }
 
 .info {
-  color: blue;
-}
-
-audio {
-  width: 100%;
-  margin-bottom: 20px;
+  color: var(--info-color);
 }
 
 .modal-overlay {
@@ -155,8 +183,8 @@ audio {
 }
 
 .modal-content {
-  background-color: white;
-  padding: 20px;
+  background-color: #FFFFFF;
+  padding: 30px;
   border-radius: 10px;
   text-align: center;
   max-width: 80%;
@@ -165,57 +193,19 @@ audio {
 
 .modal-content h2 {
   margin-top: 0;
+  color: var(--primary-color);
 }
 
 .modal-content button {
   margin-top: 20px;
 }
 
-@media (min-width: 768px) {
-  .game-area {
-    flex-direction: row;
-  }
-
-  .main-content {
-    flex: 3;
-  }
-
-  .sidebar {
-    flex: 1;
-  }
-
-  .options {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
-  .composer-image {
-    width: 100px;
-    height: 100px;
-  }
-
-  .composer-name {
-    font-size: 1rem;
-  }
-
+@media (max-width: 600px) {
   .button-group {
-    flex-direction: row;
+    flex-direction: column;
   }
 
   button {
-    width: auto;
-  }
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .medium-font {
-    font-size: 1.5rem;
-  }
-
-  .big-font {
-    font-size: 2rem;
+    width: 100%;
   }
 }
