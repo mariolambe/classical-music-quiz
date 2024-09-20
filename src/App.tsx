@@ -60,6 +60,13 @@ const classicalMusicQuiz: Song[] = [
     fun_fact: "Giuseppe Verdi was so passionate about gardening that he once said if he hadn't been a composer, he would have been a farmer!"
   },
   {
+    composer: "Giochino Rossini",
+    title: "Il Barbiere di Siviglia - Una voce poco fa",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/rossini.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/4/46/Composer_Rossini_G_1865_by_Carjat.jpg",
+    fun_fact: "Rossini was super fast at writing music! He once wrote an entire opera, The Barber of Seville, in just two weeks, and it became one of the most famous operas ever!"
+  },
+  {
     composer: "Frédéric Chopin",
     title: "Nocturne in E-flat major, Op. 9, No. 2",
     music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/chopin.mp3",
