@@ -29,7 +29,7 @@ const classicalMusicQuiz: Song[] = [
     title: "Brandenburg Concerto No. 3",
     music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/beethoven.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Beethoven.jpg",
-    fun_fact: "Beethoven wrote some of the most famous music ever, like his Ninth Symphony, even after he went completely deaf! He could "hear" the music in his mind."
+    fun_fact: "Beethoven wrote some of the most famous music ever, like his Ninth Symphony, even after he went completely deaf! He could hear the music in his mind."
   },
   {
     composer: "Antonio Vivaldi",
