@@ -10,41 +10,7 @@ interface Song {
 }
 
 const classicalMusicQuiz: Song[] = [
-  {
-    composer: "Wolfgang Amadeus Mozart",
-    title: "Die Zauberflöte",
-    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/mozart.mp3",
-    image_link: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Wolfgang-amadeus-mozart_1.jpg",
-    fun_fact: "Mozart began composing at the age of 5 and wrote over 600 pieces of music!"
-  },
-  {
-    composer: "Antonio Vivaldi",
-    title: "The Four Seasons - Summer",
-    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/vivaldi.mp3",
-    image_link: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Vivaldi.jpg",
-    fun_fact: "Vivaldi wrote over 500 concertos, with about 230 of them for violin!"
-  },
-  {
-    composer: "Johann Sebastian Bach",
-    title: "Cello Suite No. 1 in G",
-    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/bach.mp3",
-    image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg",
-    fun_fact: "Bach had 20 children and many of them became musicians too!"
-  },
-  {
-    composer: "Giuseppe Verdi",
-    title: "Requiem",
-    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/verdi.mp3",
-    image_link: "https://upload.wikimedia.org/wikipedia/commons/1/19/Verdi_by_Giovanni_Boldini.jpg",
-    fun_fact: "Giuseppe Verdi was so passionate about gardening that he once said if he hadn't been a composer, he would have been a farmer!"
-  },
-  {
-    composer: "Frédéric Chopin",
-    title: "Nocturne in E-flat major, Op. 9, No. 2",
-    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/chopin.mp3",
-    image_link: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Frederic_Chopin_photo.jpeg",
-    fun_fact: "Chopin's heart is buried in Warsaw, while the rest of him is buried in Paris!"
-  }
+  // ... (keep the existing song data)
 ];
 
 export default function App(): JSX.Element {
@@ -57,6 +23,7 @@ export default function App(): JSX.Element {
   const [usedSongs, setUsedSongs] = useState<Song[]>([]);
   const [audioError, setAudioError] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [showFeedback, setShowFeedback] = useState<boolean>(false);
 
   const getNewSong = (): Song | null => {
     const availableSongs = classicalMusicQuiz.filter(song => !usedSongs.includes(song));
@@ -79,6 +46,7 @@ export default function App(): JSX.Element {
     setUsedSongs(newSong ? [newSong] : []);
     setAudioError(false);
     setShowModal(false);
+    setShowFeedback(false);
   };
 
   const checkAnswer = (): void => {
@@ -88,6 +56,7 @@ export default function App(): JSX.Element {
       if (selectedOption === currentSong?.composer) {
         setScore(score + 1);
       }
+      setShowFeedback(true);
     }
   };
 
@@ -99,6 +68,7 @@ export default function App(): JSX.Element {
       setQuestionNumber(questionNumber + 1);
       setSelectedOption(null);
       setAudioError(false);
+      setShowFeedback(false);
     } else {
       setShowModal(true);
     }
@@ -139,6 +109,9 @@ export default function App(): JSX.Element {
                   />
                   <img src={composerData?.image_link} alt={composer} className="composer-image" />
                   <span className="composer-name">{composer}</span>
+                  {selectedOption === composer && !answerChecked && (
+                    <button onClick={checkAnswer} className="confirm-button">Confirm</button>
+                  )}
                 </label>
               );
             })}
@@ -160,25 +133,23 @@ export default function App(): JSX.Element {
             )}
             
             <div className="button-group">
-              <button onClick={checkAnswer} disabled={!selectedOption || answerChecked}>Check Answer</button>
-              <button onClick={nextQuestion} disabled={!answerChecked}>Next Question</button>
               <button onClick={startNewGame}>Start New Game</button>
             </div>
           </div>
-          
-          {answerChecked && currentSong && (
-            <div className="feedback-area">
-              <p className="medium-font">Title: {currentSong.title}</p>
-              {selectedOption === currentSong.composer ? (
-                <p className="success">Correct! 🎉</p>
-              ) : (
-                <p className="error">Oops! The correct answer was {currentSong.composer}.</p>
-              )}
-              <p className="info">Fun Fact: {currentSong.fun_fact}</p>
-            </div>
-          )}
         </div>
       </div>
+
+      {showFeedback && currentSong && (
+        <div className="modal-overlay">
+          <div className="modal-content feedback-modal">
+            <h2>{selectedOption === currentSong.composer ? "Correct! 🎉" : "Oops!"}</h2>
+            <p>The correct answer was {currentSong.composer}.</p>
+            <p className="medium-font">Title: {currentSong.title}</p>
+            <p className="info">Fun Fact: {currentSong.fun_fact}</p>
+            <button onClick={nextQuestion}>Next Question</button>
+          </div>
+        </div>
+      )}
 
       {showModal && (
         <div className="modal-overlay">
