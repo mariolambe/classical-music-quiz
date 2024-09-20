@@ -19,7 +19,7 @@ const classicalMusicQuiz: Song[] = [
   },
   {
     composer: "Johann Sebastian Bach",
-    title: "Cello Suite No. 1 in G",
+    title: "Brandenburg Concerto No. 3",
     music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/bach-1.mp3",
     image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg",
     fun_fact: "Bach wrote over 1,000 pieces of music in his lifetime! He was so talented that people still play his music today, even though he lived over 300 years ago."
