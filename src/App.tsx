@@ -56,17 +56,16 @@ export default function App(): JSX.Element {
   const [answerChecked, setAnswerChecked] = useState<boolean>(false);
   const [usedSongs, setUsedSongs] = useState<Song[]>([]);
   const [audioError, setAudioError] = useState<boolean>(false);
-  const [showFunFact, setShowFunFact] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     startNewGame();
   }, []);
 
-  const getNewSong = (): Song => {
+  const getNewSong = (): Song | null => {
     const availableSongs = classicalMusicQuiz.filter(song => !usedSongs.includes(song));
     if (availableSongs.length === 0) {
-      setUsedSongs([]);
-      return classicalMusicQuiz[Math.floor(Math.random() * classicalMusicQuiz.length)];
+      return null;
     }
     const newSong = availableSongs[Math.floor(Math.random() * availableSongs.length)];
     setUsedSongs([...usedSongs, newSong]);
@@ -74,15 +73,16 @@ export default function App(): JSX.Element {
   };
 
   const startNewGame = (): void => {
-    setCurrentSong(getNewSong());
+    const newSong = getNewSong();
+    setCurrentSong(newSong);
     setScore(0);
     setTotalQuestions(0);
     setQuestionNumber(1);
     setSelectedOption(null);
     setAnswerChecked(false);
-    setUsedSongs([]);
+    setUsedSongs(newSong ? [newSong] : []);
     setAudioError(false);
-    setShowFunFact(false);
+    setShowModal(false);
   };
 
   const checkAnswer = (): void => {
@@ -92,17 +92,20 @@ export default function App(): JSX.Element {
       if (selectedOption === currentSong?.composer) {
         setScore(score + 1);
       }
-      setShowFunFact(true);
     }
   };
 
   const nextQuestion = (): void => {
-    setCurrentSong(getNewSong());
-    setAnswerChecked(false);
-    setQuestionNumber(questionNumber + 1);
-    setSelectedOption(null);
-    setAudioError(false);
-    setShowFunFact(false);
+    const newSong = getNewSong();
+    if (newSong) {
+      setCurrentSong(newSong);
+      setAnswerChecked(false);
+      setQuestionNumber(questionNumber + 1);
+      setSelectedOption(null);
+      setAudioError(false);
+    } else {
+      setShowModal(true);
+    }
   };
 
   const handleAudioError = () => {
@@ -117,13 +120,11 @@ export default function App(): JSX.Element {
       
       <div className="game-area">
         <div className="main-content">
-          <div className="top-bar">
-            <p className="medium-font question">Who composed this music?</p>
-            <p className="medium-font score">Score: {score}/{totalQuestions}</p>
-          </div>
+          <p className="medium-font">Who composed this music?</p>
+          <p className="medium-font">Score: {score}/{totalQuestions}</p>
           
           {currentSong && (
-            <div className="audio-player">
+            <>
               {audioError ? (
                 <p className="error">Error loading audio. Please try again.</p>
               ) : (
@@ -133,7 +134,7 @@ export default function App(): JSX.Element {
                   onError={handleAudioError}
                 ></audio>
               )}
-            </div>
+            </>
           )}
           
           <div className="options">
@@ -158,27 +159,32 @@ export default function App(): JSX.Element {
           <div className="button-group">
             <button onClick={checkAnswer} disabled={!selectedOption || answerChecked}>Check Answer</button>
             <button onClick={nextQuestion} disabled={!answerChecked}>Next Question</button>
+            <button onClick={startNewGame}>Start New Game</button>
           </div>
           
           {answerChecked && currentSong && (
-            <div className="result">
+            <div>
               <p className="medium-font">Title: {currentSong.title}</p>
               {selectedOption === currentSong.composer ? (
                 <p className="success">Correct! 🎉</p>
               ) : (
                 <p className="error">Oops! The correct answer was {currentSong.composer}.</p>
               )}
-              {showFunFact && (
-                <p className="info">Fun Fact: {currentSong.fun_fact}</p>
-              )}
+              <p className="info">Fun Fact: {currentSong.fun_fact}</p>
             </div>
           )}
         </div>
-        
-        <div className="sidebar">
-          <button onClick={startNewGame} className="new-game-btn">Start New Game</button>
-        </div>
       </div>
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Game Over!</h2>
+            <p>Your final score: {score}/{totalQuestions}</p>
+            <button onClick={startNewGame}>Play Again</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
