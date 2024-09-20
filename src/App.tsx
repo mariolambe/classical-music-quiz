@@ -131,18 +131,22 @@ export default function App(): JSX.Element {
           )}
           
           <div className="options">
-            {uniqueComposers.map((composer, index) => (
-              <label key={index} className={`option ${selectedOption === composer ? 'selected' : ''}`}>
-                <input
-                  type="radio"
-                  name="composer"
-                  value={composer}
-                  checked={selectedOption === composer}
-                  onChange={(e) => setSelectedOption(e.target.value)}
-                />
-                {composer}
-              </label>
-            ))}
+            {uniqueComposers.map((composer, index) => {
+              const composerData = classicalMusicQuiz.find(song => song.composer === composer);
+              return (
+                <label key={index} className={`option ${selectedOption === composer ? 'selected' : ''}`}>
+                  <input
+                    type="radio"
+                    name="composer"
+                    value={composer}
+                    checked={selectedOption === composer}
+                    onChange={(e) => setSelectedOption(e.target.value)}
+                  />
+                  <img src={composerData?.image_link} alt={composer} className="composer-image" />
+                  <span className="composer-name">{composer}</span>
+                </label>
+              );
+            })}
           </div>
           
           <div className="button-group">
@@ -160,10 +164,6 @@ export default function App(): JSX.Element {
                 <p className="error">Oops! The correct answer was {currentSong.composer}.</p>
               )}
               <p className="info">Fun Fact: {currentSong.fun_fact}</p>
-
-              {currentSong.image_link && (
-                <img src={currentSong.image_link} alt={currentSong.composer} style={{ width: '200px', marginTop: '20px' }} />
-              )}
             </div>
           )}
         </div>
