@@ -113,7 +113,7 @@ export default function App(): JSX.Element {
       
       <div className="game-area">
         <div className="main-content">
-          <p className="medium-font">Question {questionNumber}: Who composed this music?</p>
+          <p className="medium-font">Who composed this music?</p>
           <p className="medium-font">Score: {score}/{totalQuestions}</p>
           
           {currentSong && (
