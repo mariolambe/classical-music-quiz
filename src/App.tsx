@@ -56,6 +56,7 @@ export default function App(): JSX.Element {
   const [answerChecked, setAnswerChecked] = useState<boolean>(false);
   const [usedSongs, setUsedSongs] = useState<Song[]>([]);
   const [audioError, setAudioError] = useState<boolean>(false);
+  const [showFunFact, setShowFunFact] = useState<boolean>(false);
 
   useEffect(() => {
     startNewGame();
@@ -81,6 +82,7 @@ export default function App(): JSX.Element {
     setAnswerChecked(false);
     setUsedSongs([]);
     setAudioError(false);
+    setShowFunFact(false);
   };
 
   const checkAnswer = (): void => {
@@ -90,6 +92,7 @@ export default function App(): JSX.Element {
       if (selectedOption === currentSong?.composer) {
         setScore(score + 1);
       }
+      setShowFunFact(true);
     }
   };
 
@@ -99,6 +102,7 @@ export default function App(): JSX.Element {
     setQuestionNumber(questionNumber + 1);
     setSelectedOption(null);
     setAudioError(false);
+    setShowFunFact(false);
   };
 
   const handleAudioError = () => {
@@ -113,11 +117,13 @@ export default function App(): JSX.Element {
       
       <div className="game-area">
         <div className="main-content">
-          <p className="medium-font">Who composed this music?</p>
-          <p className="medium-font">Score: {score}/{totalQuestions}</p>
+          <div className="top-bar">
+            <p className="medium-font question">Who composed this music?</p>
+            <p className="medium-font score">Score: {score}/{totalQuestions}</p>
+          </div>
           
           {currentSong && (
-            <>
+            <div className="audio-player">
               {audioError ? (
                 <p className="error">Error loading audio. Please try again.</p>
               ) : (
@@ -127,7 +133,7 @@ export default function App(): JSX.Element {
                   onError={handleAudioError}
                 ></audio>
               )}
-            </>
+            </div>
           )}
           
           <div className="options">
@@ -152,20 +158,25 @@ export default function App(): JSX.Element {
           <div className="button-group">
             <button onClick={checkAnswer} disabled={!selectedOption || answerChecked}>Check Answer</button>
             <button onClick={nextQuestion} disabled={!answerChecked}>Next Question</button>
-            <button onClick={startNewGame}>Start New Game</button>
           </div>
           
           {answerChecked && currentSong && (
-            <div>
+            <div className="result">
               <p className="medium-font">Title: {currentSong.title}</p>
               {selectedOption === currentSong.composer ? (
                 <p className="success">Correct! 🎉</p>
               ) : (
                 <p className="error">Oops! The correct answer was {currentSong.composer}.</p>
               )}
-              <p className="info">Fun Fact: {currentSong.fun_fact}</p>
+              {showFunFact && (
+                <p className="info">Fun Fact: {currentSong.fun_fact}</p>
+              )}
             </div>
           )}
+        </div>
+        
+        <div className="sidebar">
+          <button onClick={startNewGame} className="new-game-btn">Start New Game</button>
         </div>
       </div>
     </div>
