@@ -24,11 +24,59 @@ export default function App(): JSX.Element {
   const [audioError, setAudioError] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
 
+  const getNewSong = (): Song | null => {
+    const availableSongs = classicalMusicQuiz.filter(song => !usedSongs.includes(song));
+    if (availableSongs.length === 0) {
+      return null;
+    }
+    const newSong = availableSongs[Math.floor(Math.random() * availableSongs.length)];
+    setUsedSongs([...usedSongs, newSong]);
+    return newSong;
+  };
+
+  const startNewGame = (): void => {
+    const newSong = getNewSong();
+    setCurrentSong(newSong);
+    setScore(0);
+    setTotalQuestions(0);
+    setQuestionNumber(1);
+    setSelectedOption(null);
+    setAnswerChecked(false);
+    setUsedSongs(newSong ? [newSong] : []);
+    setAudioError(false);
+    setShowModal(false);
+  };
+
+  const checkAnswer = (): void => {
+    if (!answerChecked && selectedOption) {
+      setAnswerChecked(true);
+      setTotalQuestions(totalQuestions + 1);
+      if (selectedOption === currentSong?.composer) {
+        setScore(score + 1);
+      }
+    }
+  };
+
+  const nextQuestion = (): void => {
+    const newSong = getNewSong();
+    if (newSong) {
+      setCurrentSong(newSong);
+      setAnswerChecked(false);
+      setQuestionNumber(questionNumber + 1);
+      setSelectedOption(null);
+      setAudioError(false);
+    } else {
+      setShowModal(true);
+    }
+  };
+
+  const handleAudioError = () => {
+    setAudioError(true);
+  };
+
   useEffect(() => {
     startNewGame();
   }, []);
-
-  // ... (keep the existing functions)
 
   const uniqueComposers = Array.from(new Set(classicalMusicQuiz.map(song => song.composer)));
 
