@@ -30,27 +30,6 @@ h1 {
   border-radius: 10px;
 }
 
-.sidebar {
-  display: flex;
-  justify-content: center;
-}
-
-.top-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.question {
-  margin: 0 0 10px 0;
-  text-align: center;
-}
-
-.score {
-  margin: 0;
-}
-
 .medium-font {
   font-size: 1.2rem;
   color: #1E1E1E;
@@ -72,7 +51,6 @@ button {
   margin: 10px 0;
   cursor: pointer;
   width: 100%;
-  max-width: 300px;
 }
 
 button:disabled {
@@ -80,19 +58,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.new-game-btn {
-  background-color: #f44336;
-}
-
-.audio-player {
-  margin-bottom: 20px;
-}
-
 .options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
-  margin-bottom: 20px;
 }
 
 .option {
@@ -122,31 +91,37 @@ button:disabled {
 }
 
 .composer-image {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 10px;
 }
 
 .composer-name {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
 .button-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 13px;
+  padding: 3px;
   margin-bottom: 20px;
 }
 
-.result {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 15px;
+.progress {
+  height: 20px;
+  background-color: #4CAF50;
   border-radius: 10px;
-  margin-top: 20px;
+  transition: width 0.5s;
 }
 
 .success {
@@ -163,7 +138,37 @@ button:disabled {
 
 audio {
   width: 100%;
-  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 80%;
+  width: 300px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content button {
+  margin-top: 20px;
 }
 
 @media (min-width: 768px) {
@@ -177,43 +182,27 @@ audio {
 
   .sidebar {
     flex: 1;
-    align-items: flex-start;
-  }
-
-  .top-bar {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .question {
-    margin: 0;
-    text-align: left;
   }
 
   .options {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
   .composer-image {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
 
   .composer-name {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .button-group {
     flex-direction: row;
-    justify-content: center;
   }
 
   button {
     width: auto;
-  }
-
-  audio {
-    max-width: none;
   }
 }
 
