@@ -10,7 +10,41 @@ interface Song {
 }
 
 const classicalMusicQuiz: Song[] = [
-  // ... (keep the existing song data)
+  {
+    composer: "Wolfgang Amadeus Mozart",
+    title: "Die Zauberflöte",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/mozart.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Wolfgang-amadeus-mozart_1.jpg",
+    fun_fact: "Mozart began composing at the age of 5 and wrote over 600 pieces of music!"
+  },
+  {
+    composer: "Antonio Vivaldi",
+    title: "The Four Seasons - Summer",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/vivaldi.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Vivaldi.jpg",
+    fun_fact: "Vivaldi wrote over 500 concertos, with about 230 of them for violin!"
+  },
+  {
+    composer: "Johann Sebastian Bach",
+    title: "Cello Suite No. 1 in G",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/bach.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg",
+    fun_fact: "Bach had 20 children and many of them became musicians too!"
+  },
+  {
+    composer: "Giuseppe Verdi",
+    title: "Requiem",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/verdi.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/1/19/Verdi_by_Giovanni_Boldini.jpg",
+    fun_fact: "Giuseppe Verdi was so passionate about gardening that he once said if he hadn't been a composer, he would have been a farmer!"
+  },
+  {
+    composer: "Frédéric Chopin",
+    title: "Nocturne in E-flat major, Op. 9, No. 2",
+    music_link: "https://raw.githubusercontent.com/mariolambe/classical-music-quiz/main/src/music/chopin.mp3",
+    image_link: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Frederic_Chopin_photo.jpeg",
+    fun_fact: "Chopin's heart is buried in Warsaw, while the rest of him is buried in Paris!"
+  }
 ];
 
 export default function App(): JSX.Element {
@@ -90,10 +124,22 @@ export default function App(): JSX.Element {
       
       <div className="game-area">
         <div className="main-content">
-          <div className="question-score">
-            <p className="medium-font">Who composed this music?</p>
-            <p className="medium-font">Score: {score}/{totalQuestions}</p>
-          </div>
+          <p className="medium-font">Who composed this music?</p>
+          <p className="medium-font">Score: {score}/{totalQuestions}</p>
+          
+          {currentSong && (
+            <div className="music-player">
+              {audioError ? (
+                <p className="error">Error loading audio. Please try again.</p>
+              ) : (
+                <audio 
+                  controls 
+                  src={currentSong.music_link}
+                  onError={handleAudioError}
+                ></audio>
+              )}
+            </div>
+          )}
           
           <div className="options">
             {uniqueComposers.map((composer, index) => {
@@ -117,24 +163,8 @@ export default function App(): JSX.Element {
             })}
           </div>
           
-          <div className="control-area">
-            {currentSong && (
-              <div className="music-player">
-                {audioError ? (
-                  <p className="error">Error loading audio. Please try again.</p>
-                ) : (
-                  <audio 
-                    controls 
-                    src={currentSong.music_link}
-                    onError={handleAudioError}
-                  ></audio>
-                )}
-              </div>
-            )}
-            
-            <div className="button-group">
-              <button onClick={startNewGame}>Start New Game</button>
-            </div>
+          <div className="button-group">
+            <button onClick={startNewGame}>Start New Game</button>
           </div>
         </div>
       </div>
